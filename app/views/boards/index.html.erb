@@ -1,47 +1,27 @@
-<div>
-  <div>
-    <h1>
-      All boards
-    </h1>
-  </div>
-</div>
-
-<hr>
-
-<div>
-  <div>
-    <h2>
-      Add a new board
-    </h2>
-
-
-  </div>
-</div>
-
-<hr>
-
-<div class="card" style="width: 18rem;">
-  <div class="card-header">
-    <div class="d-flex justify-content-between">
-      <div class="p-2">All boards</div>
-      <div class="p-2 ms-auto">
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          Add a new board board
-        </button>
+<div class="container">
+  <div class="row">
+    <div class="offset-md-3 col-md-6">
+      <div class="card">
+        <div class="card-header d-flex align-items-center">
+          <h1 class="h6">
+            All boards
+          </h1>
+          <!-- Button trigger modal -->
+          <button type="button" class="ms-auto btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Add a new board
+          </button>
+        </div>
+        <div class="list-group list-group-flush">
+          <% @list_of_boards.each do |a_board| %>
+            <a href="/boards/<%= a_board.id %>" class="d-flex list-group-item list-group-item-action">
+              <%= a_board.name %>
+              <i class="ms-auto fa-solid fa-chevron-right"></i>
+            </a>
+          <% end %>
+        </div>
       </div>
     </div>
-    
   </div>
-  <ul class="list-group list-group-flush">
-  <% @list_of_boards.each do |a_board| %>
-    <li class="list-group-item">
-      <a href="/boards/<%= a_board.id %>">
-        <%= a_board.name %>
-      </a>
-    </li>
-  <% end %>
-  </ul>
 </div>
 
 
@@ -51,14 +31,14 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">New board</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="/insert_board" method="post">
-          <div class="mb-3>
-            <label for="name_box">
-              Name
+          <div class="mb-3">
+            <label for="name_box" class="form-label"> 
+              Name 
             </label>
             <input type="text" id="name_box" name="query_name" class="form-control">
           </div>
